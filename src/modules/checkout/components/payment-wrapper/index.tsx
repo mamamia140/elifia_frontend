@@ -17,6 +17,9 @@ const stripePromise = stripeKey ? loadStripe(stripeKey) : null
 const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
 
 const Wrapper: React.FC<WrapperProps> = ({ cart, children }) => {
+
+  console.log(cart)
+  console.log(children)
   const paymentSession = cart.payment_session as PaymentSession
 
   const isStripe = paymentSession?.provider_id?.includes("stripe")
@@ -51,7 +54,10 @@ const Wrapper: React.FC<WrapperProps> = ({ cart, children }) => {
       </PayPalScriptProvider>
     )
   }
-
+  console.log(isStripe)
+  console.log(stripeKey)
+  console.log(paymentSession)
+  console.log(stripePromise)
   return <div>{children}</div>
 }
 
